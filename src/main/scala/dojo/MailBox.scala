@@ -9,10 +9,9 @@ class MailBox {
   }
 
   def receive(msg: Any) = msg match {
-    case Ping => Pong
-    case Pong => Ping
     case "stop" => "stopped"
-    case ("echo", value @ _) => value
+    case ("echo", value) => value
+    case pp: PingPongMessage => handleMsg(pp  )
   }
 
 }
